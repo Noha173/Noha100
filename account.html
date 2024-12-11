@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حساب العميل</title>
+</head>
+<body>
+    <h1>مرحبًا، <span id="user-name"></span></h1>
+    <p><strong>البريد الإلكتروني:</strong> <span id="user-email"></span></p>
+    <h3>الرصيد المتاح: <span id="balance">0</span> دولار</h3>
+
+    <h3>طرق الدفع:</h3>
+    <div id="paypal-container"></div>
+
+    <h3>استمارة السحب:</h3>
+    <form method="POST" action="mailto:dreaminvestment311@gmail.com">
+        <label for="amount">المبلغ المطلوب:</label><br>
+        <input type="number" id="amount" name="amount" required><br><br>
+        <input type="submit" value="إرسال">
+    </form>
+
+    <script>
+        document.getElementById('user-name').innerText = localStorage.getItem('username');
+        document.getElementById('user-email').innerText = localStorage.getItem('email');
+        document.getElementById('balance').innerText = localStorage.getItem('balance') || 0;
+    </script>
+</body>
+</html>
