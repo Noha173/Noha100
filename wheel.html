@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عجلة الحظ</title>
+    <style>
+        /* نفس التصميم السابق */
+    </style>
+</head>
+<body>
+    <h1>عجلة الحظ</h1>
+    <div class="wheel-container">
+        <div class="wheel" id="wheel">
+            <!-- القطاعات -->
+            <div class="segment" style="transform: rotate(0deg);"><div class="segment-text">$5</div></div>
+            <div class="segment" style="transform: rotate(45deg);"><div class="segment-text">$10</div></div>
+            <!-- باقي القطاعات -->
+        </div>
+        <div class="pointer"></div>
+    </div>
+    <button class="spin-btn" onclick="spinWheel()">قم بتدوير العجلة</button>
+    <div class="result" id="result"></div>
+    <button onclick="window.location.href = 'account.html';">الانتقال إلى حسابك</button>
+
+    <script>
+        function spinWheel() {
+            const wheel = document.getElementById('wheel');
+            const result = document.getElementById('result');
+            const spinDegrees = Math.floor(Math.random() * (5000 - 3000) + 3000);
+            const spinResult = spinDegrees % 360;
+
+            wheel.style.transform = `rotate(${spinDegrees}deg)`;
+
+            setTimeout(() => {
+                const winAmount = Math.floor(Math.random() * 100); // أرباح عشوائية
+                result.innerText = `لقد ربحت ${winAmount} دولار.`;
+                localStorage.setItem('balance', winAmount); // حفظ الأرباح
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
